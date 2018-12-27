@@ -70,3 +70,23 @@ cityArr[30] = ['海南省','海口市','三亚市','五指山市', '琼海市', 
 cityArr[31] = ['台湾省','台北市', '高雄市', '基隆市', '台中市', '台南市', '新竹市', '嘉义市'];
 cityArr[32] = ['香港特别行政区','中西区', '湾仔区', '东区', '南区', '油尖旺区', '深水埗区', '九龙城区', '黄大仙区', '观塘区', '荃湾区', '葵青区', '沙田区', '西贡区', '大埔区', '北区', '元朗区', '屯门区', '离岛区' ];
 cityArr[33] = ['澳门特别行政区','澳门'];
+
+
+function common(a,b) {
+	for (var i = 0; i < provinceArr.length; i++) {
+		$(a).append($("<option>"+provinceArr[i]+"</option>"))
+	}
+	getCity(a,b);
+	
+	$(a).change(function(){
+		getCity(a,b);
+	})
+};
+function getCity(a,b){
+	console.log(a,b)
+	$(b).empty();
+	var index = $(a)[0].selectedIndex;
+	for (var i = 1; i < cityArr[index].length; i++) {
+		$(b).append($("<option>"+cityArr[index][i]+"</option>"))
+	}
+}
